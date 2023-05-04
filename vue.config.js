@@ -3,7 +3,7 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 
 module.exports = defineConfig({
   transpileDependencies: true,
-  publicPath: process.env.NODE_ENV === "production" ? "/Music-App/" : "/",
+  publicPath: process.env.NODE_ENV === "production" ? "/The_Newsletter/" : "/",
   outputDir: "dist",
   assetsDir: "static",
   pluginOptions: {
