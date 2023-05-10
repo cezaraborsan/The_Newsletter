@@ -1,4 +1,4 @@
-# music-app
+# news-app
 
 ## Project setup
 ```
