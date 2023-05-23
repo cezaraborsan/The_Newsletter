@@ -72,135 +72,6 @@
     <Culture />
     <News />
   </div>
-
-  <!-- <div class="home">
-    <div class="flex-container">
-      <div class="news-container">
-        <div class="daily-news">
-          <div class="news-info">
-            <span class="article-source">BBC News</span>
-            <h1>
-              <a href="#"
-                >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod,
-                nobis.</a
-              >
-            </h1>
-            <p class="summary">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae eum
-              quos neque ducimus. Nisi, fuga vero tempora excepturi veritatis
-              perspiciatis laudantium a earum dolorem, eum eaque!
-            </p>
-            <p class="author">By: John Doe</p>
-          </div>
-          <img src="../assets/homeview-bg.jpg" alt="Article Image" />
-        </div>
-        <div class="daily-news">
-          <div class="news-info">
-            <h1>
-              <a href="#"
-                >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod,
-                nobis.</a
-              >
-            </h1>
-            <p class="summary">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae eum
-              quos neque ducimus. Nisi, fuga vero tempora excepturi veritatis
-              perspiciatis laudantium a earum dolorem, eum eaque!
-            </p>
-            <p class="author">By: John Doe</p>
-          </div>
-          <img src="../assets/homeview-bg.jpg" alt="Article Image" />
-        </div>
-        <div class="daily-news">
-          <div class="news-info">
-            <h1>
-              <a href="#"
-                >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod,
-                nobis.</a
-              >
-            </h1>
-            <p class="summary">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae eum
-              quos neque ducimus. Nisi, fuga vero tempora excepturi veritatis
-              perspiciatis laudantium a earum dolorem, eum eaque!
-            </p>
-            <p class="author">By: John Doe</p>
-          </div>
-          <img src="../assets/homeview-bg.jpg" alt="Article Image" />
-        </div>
-        <div class="daily-news">
-          <div class="news-info">
-            <h1>
-              <a href="#"
-                >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod,
-                nobis.</a
-              >
-            </h1>
-            <p class="summary">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae eum
-              quos neque ducimus. Nisi, fuga vero tempora excepturi veritatis
-              perspiciatis laudantium a earum dolorem, eum eaque!
-            </p>
-            <p class="author">By: John Doe</p>
-          </div>
-          <img src="../assets/homeview-bg.jpg" alt="Article Image" />
-        </div>
-        <div class="daily-news">
-          <div class="news-info">
-            <h1>
-              <a href="#"
-                >Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod,
-                nobis.</a
-              >
-            </h1>
-            <p class="summary">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae eum
-              quos neque ducimus. Nisi, fuga vero tempora excepturi veritatis
-              perspiciatis laudantium a earum dolorem, eum eaque!
-            </p>
-            <p class="author">By: John Doe</p>
-          </div>
-          <img src="../assets/homeview-bg.jpg" alt="Article Image" />
-        </div>
-      </div>
-
-      <div class="world-news-container">
-        <div class="world-news-info">
-          <img src="../assets/homeview-bg.jpg" alt="Article Image" />
-          <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
-          <p class="author">By: John Doe</p>
-        </div>
-        <div class="world-news-info">
-          <img src="../assets/homeview-bg.jpg" alt="Article Image" />
-          <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
-          <p class="author">By: John Doe</p>
-        </div>
-        <div class="world-news-info">
-          <img src="../assets/homeview-bg.jpg" alt="Article Image" />
-          <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
-          <p class="author">By: John Doe</p>
-        </div>
-        <div class="world-news-info">
-          <img src="../assets/homeview-bg.jpg" alt="Article Image" />
-          <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
-          <p class="author">By: John Doe</p>
-        </div>
-        <div class="world-news-info">
-          <img src="../assets/homeview-bg.jpg" alt="Article Image" />
-          <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
-          <p class="author">By: John Doe</p>
-        </div>
-        <div class="world-news-info">
-          <img src="../assets/homeview-bg.jpg" alt="Article Image" />
-          <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
-          <p class="author">By: John Doe</p>
-        </div>
-      </div>
-    </div>
-    <News />
-    <Culture />
-
-  </div> -->
 </template>
 
 <script>
@@ -208,7 +79,6 @@ import axios from "axios";
 import News from "../components/News";
 import Culture from "../components/Culture";
 const newsApiKey = process.env.VUE_APP_API_KEY_NEWS;
-console.log(newsApiKey);
 export default {
   components: {
     News,
@@ -223,12 +93,15 @@ export default {
   },
 
   mounted() {
+    // Fetch daily news articles
     this.fetchArticles();
+    // Fetch worldwide articles
     this.fetchWorldWideArticles();
   },
 
   methods: {
     fetchArticles() {
+      // Fetch top headlines from the US in the general category
       axios
         .get(
           `https://newsapi.org/v2/top-headlines?country=us&pageSize=8&category=general&apiKey=${newsApiKey}`
@@ -243,6 +116,7 @@ export default {
 
     fetchWorldWideArticles() {
       axios
+        // Fetch worldwide articles related to war
         .get(
           `https://newsapi.org/v2/everything?q=war&sortBy=popularity&pageSize=13&apiKey=${newsApiKey}`
         )

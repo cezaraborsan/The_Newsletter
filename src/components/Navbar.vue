@@ -79,52 +79,54 @@ export default {
   emits: ["search"],
   data() {
     return {
-      isSearchActive: false,
-      showMenu: false,
+      isSearchActive: false, // Indicates if the search input is active
+      showMenu: false, // Indicates if the menu is visible
       focusInput: false,
-      searchTerm: "",
+      searchTerm: "", // Holds the value of the search term
     };
   },
 
   mounted() {
-    this.getWeather();
+    this.getWeather(); // Fetch weather data when the component is mounted
   },
 
   methods: {
     toggleSearch() {
-      this.isSearchActive = !this.isSearchActive;
+      this.isSearchActive = !this.isSearchActive; // Toggles the search input's active state
       if (this.isSearchActive) {
-        this.$nextTick(() => this.$refs.searchInput.focus());
+        this.$nextTick(() => this.$refs.searchInput.focus()); // Focuses on the search input field
       }
     },
 
     toggleMenu() {
-      this.showMenu = !this.showMenu;
+      this.showMenu = !this.showMenu; // Toggles the visibility of the menu
       if (this.showMenu) {
-        document.body.style.overflow = "hidden"; // disable scrolling
+        document.body.style.overflow = "hidden"; // Disables scrolling when the menu is open
       } else {
-        document.body.style.overflow = ""; // enable scrolling
+        document.body.style.overflow = ""; // Enables scrolling when the menu is open
       }
     },
 
     closeMenu() {
-      this.showMenu = false;
-      document.body.style.overflow = ""; // enable scrolling
+      this.showMenu = false; // Closes the menu
+      document.body.style.overflow = "";
       window.scrollTo(0, 0);
     },
 
     search() {
+      // Perform search if the search term is not empty
       if (this.searchTerm.trim() !== "") {
         this.$router.push(`/search/${this.searchTerm}`);
-        this.searchTerm = "";
+        this.searchTerm = ""; // Resets the search term
         this.isSearchActive = false;
         this.showMenu = false;
-        document.body.style.overflow = ""; // enable scrolling
+        document.body.style.overflow = "";
         window.scrollTo(0, 0);
       }
     },
 
     getWeather() {
+      // Fetches weather data from an API and updates the UI
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const latitude = position.coords.latitude;
@@ -140,13 +142,11 @@ export default {
               const countryElement = document.getElementById("country");
               const iconElement = document.getElementById("icon");
               const tempElement = document.getElementById("temp");
-              const descElement = document.getElementById("desc");
 
               cityElement.innerText = `${weatherData.location.name}, `;
               countryElement.innerText = weatherData.location.country;
               iconElement.src = `https:${weatherData.current.condition.icon}`;
               tempElement.innerText = `${weatherData.current.temp_c}°C `;
-              descElement.innerText = weatherData.current.condition.text;
             })
             .catch((error) => {
               console.log(error);
@@ -272,6 +272,7 @@ export default {
   width: 100px;
   font-size: 12px;
   font-weight: bold;
+
   .location {
     margin-bottom: 10px;
     text-align: center;

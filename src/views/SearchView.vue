@@ -44,20 +44,20 @@ const newsApiKey = process.env.VUE_APP_API_KEY_NEWS;
 export default {
   data() {
     return {
-      articles: [],
-      searchTerm: "",
+      articles: [], // Array to store the fetched articles
+      searchTerm: "", // Holds the current search term
     };
   },
 
   mounted() {
-    this.searchTerm = this.$route.params.searchTerm;
-    this.fetchArticles(this.searchTerm);
+    this.searchTerm = this.$route.params.searchTerm; // Get the search term from route parameter
+    this.fetchArticles(this.searchTerm); // Fetch articles based on the search term
   },
 
   watch: {
     "$route.params.searchTerm": function (newSearchTerm) {
-      this.searchTerm = newSearchTerm;
-      this.fetchArticles(newSearchTerm);
+      this.searchTerm = newSearchTerm; // Update the search term when the route parameter changes
+      this.fetchArticles(newSearchTerm); // Fetch articles based on the new search term
     },
   },
 
@@ -71,7 +71,7 @@ export default {
       axios
         .request(searchArticles)
         .then((response) => {
-          this.articles = response.data.articles;
+          this.articles = response.data.articles; // Store the fetched articles in the 'articles' array
           console.log(response.data.articles);
         })
         .catch((error) => {
@@ -194,6 +194,7 @@ export default {
 
     .article-info {
       margin-right: 0rem;
+      width: 100%;
     }
 
     h3 {
@@ -204,6 +205,18 @@ export default {
       max-width: 800px;
       margin-left: 0rem;
     }
+
+    a {
+      width: 100%;
+    }
   }
 }
 </style>
+
+@media (max-width: 1600px) { .results-container { max-width: 80%; } } @media
+(max-width: 1400px) { .results-container { max-width: 100%; } } @media
+(max-width: 990px) { h1 { margin-inline: 1.2rem; } .search-results { padding:
+1rem; span { font-size: 20px; font-weight: bold; text-decoration: underline;
+color: #343434; } } .results-container { padding-top: 4rem; } .results-card {
+display: flex; flex-direction: column; margin-inline: 1.2rem; .article-info {
+margin-right: 0rem; width: 100%; } a { width: 100%; } } }

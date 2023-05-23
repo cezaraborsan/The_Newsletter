@@ -53,17 +53,20 @@ export default {
   },
   watch: {
     category: function (newCategory) {
+      // Update the API URL when the category changes
       this.apis = this.api[newCategory];
       this.fetchArticles();
     },
   },
   mounted() {
+    // Initialize the API URL and fetch articles on component mount
     this.apis = this.api[this.category];
     this.fetchArticles();
   },
 
   methods: {
     fetchArticles() {
+      // Fetch articles from the API URL using Axios
       axios
         .get(this.api.url)
         .then((response) => {

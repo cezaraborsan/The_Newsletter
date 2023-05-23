@@ -1,10 +1,13 @@
 <template>
   <footer>
     <div class="container">
-      <div><router-link to="/" class="logo">The Newsletter</router-link></div>
+      <div>
+        <router-link to="/" class="logo">The Newsletter</router-link>
+      </div>
 
       <div class="row">
         <div class="col">
+          <!-- News section -->
           <h5>News</h5>
           <ul>
             <li><a href="#">Business</a></li>
@@ -17,6 +20,7 @@
           </ul>
         </div>
         <div class="col">
+          <!-- Help section -->
           <h5>Help</h5>
           <ul>
             <li><a href="#">FAQ</a></li>
@@ -28,6 +32,7 @@
         </div>
 
         <div class="col">
+          <!-- Follow Us section -->
           <h5>Follow Us</h5>
           <ul class="social-icons">
             <li>
@@ -74,6 +79,7 @@
         </div>
 
         <div class="col">
+          <!-- Contact Us section -->
           <h5>Contact Us</h5>
           <p>
             123 Main Street, Suite 200<br />Anytown, USA 12345<br />Phone:
@@ -85,13 +91,12 @@
 
     <div class="row">
       <div class="col rights-reserved">
+        <!-- Rights Reserved section -->
         <p>&copy; 2023 thenewsletter.com. All Rights Reserved.</p>
       </div>
     </div>
   </footer>
 </template>
-
-<script></script>
 
 <style lang="scss" scoped>
 footer {

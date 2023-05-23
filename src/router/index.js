@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import SearchView from "../views/SearchView.vue";
 import CategoryView from "../views/CategoryView.vue";
+
 const newsApiKey = process.env.VUE_APP_API_KEY_NEWS;
 
 const routes = [

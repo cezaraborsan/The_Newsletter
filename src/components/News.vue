@@ -2,7 +2,9 @@
   <div class="news-by-category-container">
     <h2>More News</h2>
     <div class="articles">
+      <!-- Loop through each category -->
       <div v-for="category in categories" :key="category.name" class="category">
+        <!-- Link to the category's path and scroll to the top when clicked -->
         <router-link
           :to="'/' + category.path"
           class="category-title"
@@ -13,11 +15,13 @@
             <font-awesome-icon icon="fa-chevron-right" class="chevron-right" />
           </h3>
         </router-link>
+        <!-- Display articles within the category -->
         <div
           v-for="article in category.articles"
           :key="article.title"
           class="article"
         >
+          <!-- Link to the article's URL and open in a new tab -->
           <a :href="article.url" target="_blank">{{ article.title }}</a>
         </div>
       </div>
@@ -29,11 +33,13 @@
 export default {
   data() {
     return {
+      // Array of categories and their respective articles
       categories: [
         {
           name: "Sports",
           path: "sports",
           articles: [
+            // Article objects with title and URL
             {
               title:
                 "Latest bracket, schedule and scores for 2023 NCAA men's tournament",
@@ -194,6 +200,7 @@ export default {
   },
 
   methods: {
+    // Function to scroll to the top of the page
     scrollToTop() {
       window.scrollTo(0, 0);
     },
@@ -253,19 +260,13 @@ h2 {
 
 @media (max-width: 990px) {
   .articles {
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 50px;
-    grid-row-gap: 20px;
   }
 }
 
 @media (max-width: 800px) {
   .articles {
-    display: grid;
     grid-template-columns: repeat(1, 1fr);
-    grid-column-gap: 50px;
-    grid-row-gap: 20px;
   }
 }
 </style>
